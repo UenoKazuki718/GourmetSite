@@ -46,15 +46,15 @@
 </style>
 
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'detail')" id="defaultOpen">お店の紹介</button>
-  <button class="tablinks" onclick="openCity(event, 'menu')">メニュー</button>
-  <button class="tablinks" onclick="openCity(event, 'image')">写真</button>
-  <button class="tablinks" onclick="openCity(event, 'book')">予約</button>
-  <button class="tablinks" onclick="openCity(event, 'review')">レビュー</button>
+  <button class="tablinks" onclick="detail(event, 'introduction')" id="defaultOpen">お店の紹介</button>
+  <button class="tablinks" onclick="detail(event, 'menu')">メニュー</button>
+  <button class="tablinks" onclick="detail(event, 'image')">写真</button>
+  <button class="tablinks" onclick="detail(event, 'book')">予約</button>
+  <button class="tablinks" onclick="detail(event, 'review')">レビュー</button>
 
 </div>
 
-<div id="detail" class="tabcontent">
+<div id="introduction" class="tabcontent">
         お店の紹介内容  <br>
         とてもお肉が美味しい<br>
         お寿司も美味しい<br>
@@ -86,7 +86,7 @@
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.8280303808788!2d139.76493611525882!3d35.68123618019432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1589862253530!5m2!1sja!2sjp" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 <script>
-function openCity(evt, cityName) {
+function detail(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
