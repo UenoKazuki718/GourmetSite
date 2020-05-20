@@ -15,8 +15,8 @@
     </h1>
     <nav class="pc-nav">
         <ul>
-            <li><a href="#">ログイン</a></li>
-            <li><a href="#">アカウント作成</a></li>
+            <li><a href="/グル渋/login.html">ログイン</a></li>
+            <li><a href="makeAccount.jsp">アカウント作成</a></li>
         </ul>
     </nav>
 </header>
@@ -36,7 +36,7 @@
 </a>
 </div>
 <div id ="link1">
-<a href="出力先">
+<a href="/グル渋/Detail">
 <div class="box">
 <div class="box-img">
 <img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png" style="float:left;">
