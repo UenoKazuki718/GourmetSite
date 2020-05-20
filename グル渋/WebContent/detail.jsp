@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/グル渋/list.jsp">戻る</a><h1>店名</h1>
+<a href="/グル渋/list.jsp">戻る</a>
+<h1>店名</h1>
 <img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png">
 <img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png">
 <img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png"><br>
