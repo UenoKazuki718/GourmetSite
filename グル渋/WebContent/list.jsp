@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
+<%@ page import="java.util.List" 
+%>
+<% String check = (String) session.getAttribute("session"); 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +18,12 @@
     </h1>
     <nav class="pc-nav">
         <ul>
+        <% if(check == null) { %>
             <li><a href="/グル渋/login.html">ログイン</a></li>
-            <li><a href="makeAccount.jsp">アカウント作成</a></li>
+        <% }else {  %>
+            <li><a href="/グル渋/Logout">ログアウト</a></li>
+        <% } %>
+            <li><a href="/グル渋/makeAccount.jsp">アカウント作成</a></li>
         </ul>
     </nav>
 </header>

@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/グル渋/css/starability-all.min.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -79,7 +80,28 @@
 </div>
 
 <div id="review" class="tabcontent">
-    レビュー内容
+    <form action="/グル渋/Review" method="post">
+  <fieldset class="starability-basic">
+    <legend>レビュー内容:</legend>
+ 
+    <input type="radio" id="rate5" name="rating" value="5">
+    <label for="rate5" title="Amazing" aria-label="Amazing, 5 stars">5 stars</label>
+ 
+    <input type="radio" id="rate4" name="rating" value="4">
+    <label for="rate4" title="Very good" aria-label="Very good, 4 stars">4 stars</label>
+ 
+    <input type="radio" id="rate3" name="rating" value="3">
+    <label for="rate3" title="Average" aria-label="Average, 3 stars">3 stars</label>
+ 
+    <input type="radio" id="rate2" name="rating" value="2">
+    <label for="rate2" title="Not good" aria-label="Not good, 2 stars">2 stars</label>
+ 
+    <input type="radio" id="rate1" name="rating" value="1">
+    <label for="rate1" title="Terrible" aria-label="Terrible, 1 star">1 star</label>
+  </fieldset>
+  <textarea name="text" cols="30" rows="5"></textarea>
+<input type ="submit" value="レビューする">
+</form>
 </div>
 
 電話番号
