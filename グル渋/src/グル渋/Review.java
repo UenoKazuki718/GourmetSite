@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 /**
  * Servlet implementation class Review
  */
@@ -37,8 +36,8 @@ public class Review extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int rating = Integer.parseInt(request.getParameter("rating"));
-		String text = request.getParameter("text");
+		//int rating = Integer.parseInt(request.getParameter("rating"));
+		//String text = request.getParameter("text");
 		//サーバーに保存
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/detail.jsp");
 		dispatcher.forward(request, response);

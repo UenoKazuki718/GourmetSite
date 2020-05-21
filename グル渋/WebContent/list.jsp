@@ -1,8 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" 
+<%@ page import="java.util.List,java.sql.Connection,java.sql.DriverManager,java.sql.ResultSet,java.sql.Statement"
 %>
 <% String check = (String) session.getAttribute("session"); 
+request.setCharacterEncoding("UTF-8");
+//データベースに接続
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			 
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/GuruSibu", "root", "Gfreke38");
+			Statement stmt = con.createStatement();
+			//stmt.executeUpdate("INSERT INTO user (name,password,email) VALUES ('ueno','kazuki','topgate.com')");
+			
+			stmt.close();
+			con.close();
+			}catch(Exception e){
+				System.out.println("MySQLに接続できませんでした。");
+			}
 %>
 <!DOCTYPE html>
 <html>
@@ -73,6 +87,21 @@
 </div>
 </a>
 </div>
-
+<script>
+function test(){
+	var list = "a";//session.getAttribute("list"); 
+	//session.invalidate();
+	//alert("OK");
+	//System.out.printf(list);
+	if(list == "a") {
+		//alert("OK");
+		var req = new XMLHttpRequest();
+		req.open("POST", "/グル渋/getList"); // /application名/Servlet名
+    	// リクエストを送信
+    	req.send();
+	}
+	
+	}
+</script>
 </body>
 </html>

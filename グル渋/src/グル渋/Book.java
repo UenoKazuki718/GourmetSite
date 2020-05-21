@@ -40,7 +40,7 @@ public class Book extends HttpServlet {
 		String date = request.getParameter("date");
 		int num = Integer.parseInt(request.getParameter("num"));
 		String course = request.getParameter("course");
-		System.out.print(date);
+		String tel = request.getParameter("tel");
 		//サーバーに保存
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/detail.jsp");
 		dispatcher.forward(request, response);

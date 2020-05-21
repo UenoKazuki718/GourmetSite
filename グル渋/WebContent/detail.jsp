@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String check = (String) session.getAttribute("session"); 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +12,7 @@
 </head>
 <body>
 <a href="/グル渋/list.jsp">戻る</a>
-<h1>店名</h1>
-<img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png">
-<img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png">
-<img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png"><br>
+<h1><img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png">店名</h1>
 <style>
 .tab {
     overflow: hidden;
@@ -85,15 +84,19 @@
 <option value="選択肢2">選択肢2</option>
 <option value="選択肢3">選択肢3</option>
 </select><br>
+  電話番号 : <input type="tel" name="telNumber" pattern="\d{1,5}-\d{1,4}-\d{4,5}"  placeholder="080-1234-5678"><br>
   <input type ="submit" value="予約する">
 </form>
 </div>
 
 <div id="review" class="tabcontent">
+<% if(check != null) { %>
+    レビューするにはログインしてください<br>
+    <li><a href="/グル渋/login.html">ログイン</a></li>
+<% }else {  %>
     <form action="/グル渋/Review" method="post">
-  <fieldset class="starability-basic">
+    <fieldset class="starability-basic">
     <legend>レビュー内容:</legend>
- 
     <input type="radio" id="rate5" name="rating" value="1">
     <label for="rate5" title="Amazing" aria-label="Amazing, 5 stars">5 stars</label>
     <input type="radio" id="rate4" name="rating" value="2">
@@ -104,10 +107,23 @@
     <label for="rate2" title="Not good" aria-label="Not good, 2 stars">2 stars</label>
     <input type="radio" id="rate1" name="rating" value="5">
     <label for="rate1" title="Terrible" aria-label="Terrible, 1 star">1 star</label>
-  </fieldset>
-  <textarea name="text" cols="30" rows="5"></textarea>
-<input type ="submit" value="レビューする">
-</form>
+    </fieldset>
+    <textarea name="text" cols="30" rows="5"></textarea><br>
+    <input type ="submit" value="レビューする">
+    </form>
+   <% } %>
+   <div style="width:100%;height:150px;overflow:auto;">
+<p>レビュー１</p>
+<p>レビュー２</p>
+<p>レビュー３</p>
+<p>レビュー４</p>
+<p>レビュー５</p>
+<p>レビュー６</p>
+<p>レビュー７</p>
+<p>レビュー８</p>
+<p>レビュー９</p>
+<p>レビュー１０</p>
+</div>
 </div>
 
 電話番号
