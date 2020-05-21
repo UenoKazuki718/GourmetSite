@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="http://localhost:8080/グル渋/css/starability-all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-datetimepicker@2.5.20/jquery.datetimepicker.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -76,7 +77,16 @@
  </div>
 
 <div id="book" class="tabcontent">
- 
+ <form action="/グル渋/Book" method="post">
+  予約日 : <input type="text"  id="date" name="date" class="datetimepicker"><br>
+  人数  : <input type="text" id="num" name="num" maxlength='2' pattern="[1-9]|[1-9][0-9]" >人<br>
+  コース : <select name="course" id="course">
+<option value="選択肢1">選択肢1</option>
+<option value="選択肢2">選択肢2</option>
+<option value="選択肢3">選択肢3</option>
+</select><br>
+  <input type ="submit" value="予約する">
+</form>
 </div>
 
 <div id="review" class="tabcontent">
@@ -84,19 +94,15 @@
   <fieldset class="starability-basic">
     <legend>レビュー内容:</legend>
  
-    <input type="radio" id="rate5" name="rating" value="5">
+    <input type="radio" id="rate5" name="rating" value="1">
     <label for="rate5" title="Amazing" aria-label="Amazing, 5 stars">5 stars</label>
- 
-    <input type="radio" id="rate4" name="rating" value="4">
-    <label for="rate4" title="Very good" aria-label="Very good, 4 stars">4 stars</label>
- 
+    <input type="radio" id="rate4" name="rating" value="2">
+    <label for="rate4" title="Very good" aria-label="Very good, 4 stars">4 stars</label> 
     <input type="radio" id="rate3" name="rating" value="3">
     <label for="rate3" title="Average" aria-label="Average, 3 stars">3 stars</label>
- 
-    <input type="radio" id="rate2" name="rating" value="2">
+    <input type="radio" id="rate2" name="rating" value="4">
     <label for="rate2" title="Not good" aria-label="Not good, 2 stars">2 stars</label>
- 
-    <input type="radio" id="rate1" name="rating" value="1">
+    <input type="radio" id="rate1" name="rating" value="5">
     <label for="rate1" title="Terrible" aria-label="Terrible, 1 star">1 star</label>
   </fieldset>
   <textarea name="text" cols="30" rows="5"></textarea>
@@ -124,6 +130,13 @@ function detail(evt, cityName) {
 }
 document.getElementById("defaultOpen").click();
 </script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-datetimepicker@2.5.20/build/jquery.datetimepicker.full.min.js"></script>
+<script>
+  $(function() {
+    $(".datetimepicker").datetimepicker();
+  });
+</script>
 </body>
 </html>

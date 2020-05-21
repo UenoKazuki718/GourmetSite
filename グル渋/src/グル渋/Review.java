@@ -1,6 +1,8 @@
 package グル渋;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,8 +36,12 @@ public class Review extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		int rating = Integer.parseInt(request.getParameter("rating"));
+		String text = request.getParameter("text");
+		//サーバーに保存
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/detail.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

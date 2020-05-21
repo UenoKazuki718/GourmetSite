@@ -27,9 +27,12 @@
         </ul>
     </nav>
 </header>
-
+<form action="/グル渋/Search" method="post">
+  キーワード検索 : <input type="search" name="search" placeholder="キーワードを入力">
+  <input type="submit" name="submit" value="検索">
+</form>
 <div id ="link1">
-<a href="出力先">
+<a href="/グル渋/Detail">
 <div class="box">
 <div class="box-img">
 <img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png" style="float:left;">
@@ -57,7 +60,7 @@
 </a>
 </div>
 <div id ="link1">
-<a href="出力先">
+<a href="/グル渋/Detail">
 <div class="box">
 <div class="box-img">
 <img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png" style="float:left;">

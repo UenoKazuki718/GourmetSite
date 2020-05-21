@@ -10,7 +10,7 @@
 <h1>アカウント作成</h1>
  <form id="form">
     ユーザー名 : <input type="text" id="username" name="username" ><br>
-    メールアドレス : <input type="text" id="mail" name="loginid" minlength='8' maxlength='100' pattern="[^\s]+@[^\s]+" ><br>
+    メールアドレス : <input type="email" id="mail" name="loginid" minlength='8' maxlength='100' ><br>
     パスワード : <input type="password" id="password" name="password" minlength='8' maxlength='32'><br>
     <a href="/グル渋/list.jsp">戻る</a>
     <input type="submit" value="作成">
