@@ -1,6 +1,7 @@
 package グル渋;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Detail
@@ -28,7 +30,20 @@ public class Detail extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/detail.jsp");
+		
+		request.setCharacterEncoding("UTF-8");
+		int id = Integer.parseInt(request.getParameter("id"));
+		DetailDao dao = new DetailDao();
+		ArrayList<Menu> menuList = dao.getMenu(id);
+		ArrayList<Rating> ratingList = dao.getReview(id);
+		Restaurant detail = dao.getDetail(id);
+		ArrayList<String> imgList = dao.getImage(id);
+		HttpSession session = request.getSession();
+		session.setAttribute("menu", menuList);
+		session.setAttribute("rating", ratingList);
+		session.setAttribute("detail", detail);
+		session.setAttribute("image", imgList);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/detail.jsp");
 		dispatcher.forward(request, response);
 	}
 

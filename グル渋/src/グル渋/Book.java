@@ -37,12 +37,13 @@ public class Book extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		String name = request.getParameter("name");
 		String date = request.getParameter("date");
 		int num = Integer.parseInt(request.getParameter("num"));
 		String course = request.getParameter("course");
 		String tel = request.getParameter("tel");
 		//サーバーに保存
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/detail.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/detail.jsp");
 		dispatcher.forward(request, response);
 	}
 

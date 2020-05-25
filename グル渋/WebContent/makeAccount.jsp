@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>アカウント作成</h1>
- <form id="form">
+ <form id="form" action="/グル渋/makeAccount" method="post">
     ユーザー名 : <input type="text" id="username" name="username" ><br>
     メールアドレス : <input type="email" id="mail" name="loginid" minlength='8' maxlength='100' ><br>
     パスワード : <input type="password" id="password" name="password" minlength='8' maxlength='32'><br>

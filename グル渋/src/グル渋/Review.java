@@ -36,10 +36,13 @@ public class Review extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		//int rating = Integer.parseInt(request.getParameter("rating"));
-		//String text = request.getParameter("text");
-		//サーバーに保存
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/detail.jsp");
+		int rating = Integer.parseInt(request.getParameter("rating"));
+		int restaurantId = 1;///////あとで書く
+		int userId = 1;////////あとで書く
+		String text = request.getParameter("text");
+		ReviewDao dao = new ReviewDao();
+		dao.setReview(rating,text,restaurantId,userId);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/detail.jsp");
 		dispatcher.forward(request, response);
 	}
 

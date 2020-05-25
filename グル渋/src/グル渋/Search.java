@@ -1,6 +1,7 @@
 package グル渋;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Search
@@ -39,6 +41,13 @@ public class Search extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String keyword = request.getParameter("search");
 		//サーバーからキーワードに当てはまるものを探索
+		if(keyword != "") {
+		DetailDao dao = new DetailDao();
+		ArrayList<Restaurant> list = dao.searchDetail(keyword);
+		HttpSession session = request.getSession();
+		session.setAttribute("searchList", list);
+		session.setAttribute("key", "OK");
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/list.jsp");
 		dispatcher.forward(request, response);
 	}
