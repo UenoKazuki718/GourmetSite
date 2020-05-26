@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List,java.util.ArrayList,グル渋.Rating,グル渋.Menu,グル渋.Restaurant"
+%>
+<% String check = (String) session.getAttribute("session"); 
+request.setCharacterEncoding("UTF-8");
+ArrayList<Rating> ratingList = (ArrayList<Rating>) session.getAttribute("rating");
+ArrayList<Menu> menuList = (ArrayList<Menu>) session.getAttribute("menu");
+Restaurant detail = (Restaurant) session.getAttribute("detail");
+String img = "http://localhost:8080/グル渋/image/" + detail.getImage();
+ArrayList<String> imgList = (ArrayList<String>) session.getAttribute("image");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +20,7 @@
 </head>
 <body>
 <a href="/グル渋/list.jsp">戻る</a>
-<h1>店名</h1>
-<img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png">
-<img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png">
-<img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png"><br>
+<h1><img style="width: 100px; height: 100px" src=<%= img%> > <%= detail.getName()%></h1>
 <style>
 .tab {
     overflow: hidden;
@@ -54,47 +61,57 @@
   <button class="tablinks" onclick="detail(event, 'image')">写真</button>
   <button class="tablinks" onclick="detail(event, 'book')">予約</button>
   <button class="tablinks" onclick="detail(event, 'review')">レビュー</button>
-
 </div>
 
 <div id="introduction" class="tabcontent">
         お店の紹介内容  <br>
-        とてもお肉が美味しい<br>
-        お寿司も美味しい<br>
+        <%= detail.getInf()%>   
 </div>
 
 <div id="menu" class="tabcontent">
     <ul>
-        <li>ステーキ 1800円</li>
-        <li>寿司盛り合わせ 1200円</li>
-        <li>鍋 1000円</li>
+        <% if (menuList != null) { %>
+		<% for(Menu post : menuList) {%>
+		 	<li><%= post.getName()%> : <%= post.getPrice()%> 円</li>
+		<% } %>
+		<% } %>
     </ul>    
  </div>
+ 
+ 
  <div id="image" class="tabcontent">
-	<img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png">
-	<img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png">
-	<img style="width: 100px; height: 100px" src="http://localhost:8080/グル渋/image/noimage.png">
+	<% if (imgList != null) { %>
+		<% for(String post : imgList) {%>
+		 	<% String image = "http://localhost:8080/グル渋/image/" + post;%>
+		 	<img style="width: 100px; height: 100px" src=<%= image%>>
+		<% } %>
+	<% } %>
  </div>
 
 <div id="book" class="tabcontent">
  <form action="/グル渋/Book" method="post">
-  予約日 : <input type="text"  id="date" name="date" class="datetimepicker"><br>
-  人数  : <input type="text" id="num" name="num" maxlength='2' pattern="[1-9]|[1-9][0-9]" >人<br>
-  コース : <select name="course" id="course">
+  名前  : <input type="text" id="name" name="name" required><br>
+  予約日 : <input type="text"  id="date" name="date" class="datetimepicker" required><br>
+  人数  : <input type="text" id="num" name="num" maxlength='2' pattern="[1-9]|[1-9][0-9]" required>人<br>
+  コース : <select name="course" id="course" required>
 <option value="選択肢1">選択肢1</option>
 <option value="選択肢2">選択肢2</option>
 <option value="選択肢3">選択肢3</option>
 </select><br>
+  電話番号 : <input type="tel" name="telNumber" pattern="\d{1,5}-\d{1,4}-\d{4,5}"  placeholder="080-1234-5678" required><br>
   <input type ="submit" value="予約する">
 </form>
 </div>
 
 <div id="review" class="tabcontent">
+<% if(check != null) { %>
+    レビューするにはログインしてください<br>
+    <li><a href="/グル渋/login.html">ログイン</a></li>
+<% }else {  %>
     <form action="/グル渋/Review" method="post">
-  <fieldset class="starability-basic">
+    <fieldset class="starability-basic">
     <legend>レビュー内容:</legend>
- 
-    <input type="radio" id="rate5" name="rating" value="1">
+    <input type="radio" id="rate5" name="rating" value="1" required>
     <label for="rate5" title="Amazing" aria-label="Amazing, 5 stars">5 stars</label>
     <input type="radio" id="rate4" name="rating" value="2">
     <label for="rate4" title="Very good" aria-label="Very good, 4 stars">4 stars</label> 
@@ -104,15 +121,24 @@
     <label for="rate2" title="Not good" aria-label="Not good, 2 stars">2 stars</label>
     <input type="radio" id="rate1" name="rating" value="5">
     <label for="rate1" title="Terrible" aria-label="Terrible, 1 star">1 star</label>
-  </fieldset>
-  <textarea name="text" cols="30" rows="5"></textarea>
-<input type ="submit" value="レビューする">
-</form>
+    </fieldset>
+    <textarea name="text" cols="30" rows="5" required></textarea><br>
+    <input type ="submit" value="レビューする">
+    </form>
+   <% } %>
+    <div style="width:100%;height:150px;overflow:auto;">
+<% if (ratingList != null) { %>
+<% for(Rating post : ratingList) {%>
+ 	<p>評価 : <%= post.getScore()%> </p>
+ 	<li> <%= post.getText()%> </li>
+<% } %>
+<% } %>
+</div>
 </div>
 
 電話番号
-<li>0120-828-828</li>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.8280303808788!2d139.76493611525882!3d35.68123618019432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1589862253530!5m2!1sja!2sjp" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+<li><%= detail.getTel()%></li>
+<%= detail.getMap()%>
 
 <script>
 function detail(evt, cityName) {

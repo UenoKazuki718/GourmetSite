@@ -8,17 +8,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 /**
- * Servlet implementation class Review
+ * Servlet implementation class getList
  */
-@WebServlet("/Review")
-public class Review extends HttpServlet {
+@WebServlet("/getList")
+public class getList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Review() {
+    public getList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,14 +37,9 @@ public class Review extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		int rating = Integer.parseInt(request.getParameter("rating"));
-		int restaurantId = 1;///////あとで書く
-		int userId = 1;////////あとで書く
-		String text = request.getParameter("text");
-		ReviewDao dao = new ReviewDao();
-		dao.setReview(rating,text,restaurantId,userId);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/detail.jsp");
+		HttpSession session = request.getSession();
+		session.setAttribute("list", "OK");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/list.jsp");
 		dispatcher.forward(request, response);
 	}
 
