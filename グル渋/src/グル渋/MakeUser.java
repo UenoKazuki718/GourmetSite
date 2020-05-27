@@ -44,21 +44,17 @@ public class MakeUser extends HttpServlet {
 
 
         // makeAccout.jspから受け取った値をビーンズにセット
-        UserBeans ub = new UserBeans();
-        //ub.setId(id);
-        ub.setName(name);
-        ub.setPassword(password);
-        ub.setEmail(email);
 
 
         // アカウントをDBに登録
-        MakeUserDAO mud = new MakeUserDAO(ub);
-
+        MakeUserDAO mud = new MakeUserDAO();
+        System.out.println("test1");
+        mud.MakeUserDAO(name,password,email);
         // セッションにアカウント情報を保存
         HttpSession session = request.getSession();
         session.setAttribute("user", mud);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WebContent/makeUserSuccess.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/makeUserSuccess.jsp");
         rd.forward(request, response);
 
     }

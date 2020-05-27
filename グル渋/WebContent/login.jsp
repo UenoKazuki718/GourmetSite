@@ -7,7 +7,7 @@
 <title>ログイン画面</title>
 </head>
 <body>
-<form action="/グル渋/UserSearch" method="post">
+<form action="/グル渋/Login" method="post">
 メールアドレス：<input type="text" name="mail" required><br>
 パスワード：<input type="password" name="password" required><br>
 <input type="submit" value="ログイン"><br>

@@ -42,8 +42,9 @@ request.setCharacterEncoding("UTF-8");
     <nav class="pc-nav">
         <ul>
         <% if(check == null) { %>
-            <li><a href="/グル渋/login.html">ログイン</a></li>
+            <li><a href="/グル渋/login.jsp">ログイン</a></li>
         <% }else {  %>
+        	<li><a href="/グル渋/MyPage">マイページ</a></li>
             <li><a href="/グル渋/Logout">ログアウト</a></li>
         <% } %>
             <li><a href="/グル渋/makeAccount.jsp">アカウント作成</a></li>
@@ -72,7 +73,7 @@ request.setCharacterEncoding("UTF-8");
 <img style="width: 100px; height: 100px" src=<%= img%> style="float:left;">
 </div>
 <div class="box-text">
-<p>店名 : <%= post.getName()%><br>
+店名 : <%= post.getName()%><br>
 場所 : <%= post.getAddress()%><br>
 カテゴリ:
 		<% ResultSet rs = stmt.executeQuery("SELECT * from category WHERE restaurantId = '"+post.getId()+"'");
@@ -80,13 +81,14 @@ request.setCharacterEncoding("UTF-8");
 			<%= rs.getString("category")%>
 		<%}
 		rs.close();%>
-<br>評価 : 
 <% ResultSet rs2 = stmt.executeQuery("SELECT AVG(score) AS 'avg' from review WHERE restaurantId = '"+post.getId()+"'");
-		while (rs2.next()) {%>
-			<%= rs2.getString("avg")%>
-		<%}
+		while (rs2.next()) {
+			double rate = rs2.getDouble("avg")*20;
+			if(rate != 0){%>
+			<div class="star-ratings-sprite"><span style="width:<%= rate%>%" class="star-ratings-sprite-rating"></span></div>
+		<%	}
+			}
 		rs2.close();%>
-</p>
 </div>
 </div>
 </a>

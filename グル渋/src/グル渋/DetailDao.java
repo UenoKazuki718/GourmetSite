@@ -163,7 +163,7 @@ public class DetailDao {
 		 			Statement stmt = con.createStatement();
 		 			ResultSet rs = stmt.executeQuery("SELECT * from course WHERE restaurantId = '" + id + "'");
 		 			while (rs.next()) {
-		 				list.add(new Course(rs.getInt("id"),rs.getString("name"),rs.getInt("price"),rs.getString("detail")));
+		 				list.add(new Course(rs.getInt("id"),rs.getString("courseName"),rs.getInt("price"),rs.getString("detail")));
 		 			}
 		 			rs.close();
 		 			stmt.close();

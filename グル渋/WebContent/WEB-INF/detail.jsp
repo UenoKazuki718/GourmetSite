@@ -21,7 +21,7 @@ ArrayList<Course> courseList = (ArrayList<Course>) session.getAttribute("course"
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/グル渋/list.jsp">戻る</a>
+<a href="/グル渋/list.jsp">一覧に戻る</a>
 <h1><img style="width: 100px; height: 100px" src=<%= img%> > <%= detail.getName()%></h1>
 
 
@@ -173,7 +173,8 @@ document.getElementById("defaultOpen").click();
 <script>
   $(function() {
     $(".datetimepicker").datetimepicker({
-    	minDate:"d"
+    	minDate:"d",
+    	minTime:"h"
     });
   });
 </script>
