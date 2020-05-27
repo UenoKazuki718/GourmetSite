@@ -12,6 +12,7 @@ public class Restaurant {
 	String tel;
 	String img;
 	ArrayList<String>  category;
+	int avg;
 	
 	public Restaurant(int id, String name, String inf, String map, String address,String tel,String img) {
 		this.id = id;
@@ -49,5 +50,13 @@ public class Restaurant {
     
     public String getImage(){
         return this.img;
+    }
+    
+    public void setAvg(int score){
+        this.avg = score;
+    }
+    
+    public int getAvg(){
+        return this.avg;
     }
 }

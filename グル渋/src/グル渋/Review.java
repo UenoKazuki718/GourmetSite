@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class Review
  */
@@ -37,7 +38,8 @@ public class Review extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		int rating = Integer.parseInt(request.getParameter("rating"));
-		int restaurantId = 1;///////あとで書く
+		HttpSession session = request.getSession();
+		int restaurantId = (int) session.getAttribute("restaurantId");///////あとで書く
 		int userId = 1;////////あとで書く
 		String text = request.getParameter("text");
 		ReviewDao dao = new ReviewDao();

@@ -3,13 +3,11 @@ package グル渋;
 public class Menu {
 int price;
 String name;
-int isCourse;
-int courseId;
-	public Menu(int price,String name,int isCourse,int courseId) {
+int isDish;
+	public Menu(int price,String name,int isDish) {
 		this.price = price;
 		this.name = name;
-		this.isCourse = isCourse;
-		this.courseId = courseId;
+		this.isDish = isDish;
 	}
 	
 	public int getPrice(){
@@ -18,5 +16,9 @@ int courseId;
 
 	public String getName(){
 	    return this.name;
+	}
+	
+	public int isDish(){
+	    return this.isDish;
 	}
 }

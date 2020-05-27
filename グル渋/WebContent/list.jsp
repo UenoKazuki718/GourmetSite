@@ -80,6 +80,12 @@ request.setCharacterEncoding("UTF-8");
 			<%= rs.getString("category")%>
 		<%}
 		rs.close();%>
+<br>評価 : 
+<% ResultSet rs2 = stmt.executeQuery("SELECT AVG(score) AS 'avg' from review WHERE restaurantId = '"+post.getId()+"'");
+		while (rs2.next()) {%>
+			<%= rs2.getString("avg")%>
+		<%}
+		rs2.close();%>
 </p>
 </div>
 </div>

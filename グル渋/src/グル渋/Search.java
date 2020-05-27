@@ -42,8 +42,9 @@ public class Search extends HttpServlet {
 		String keyword = request.getParameter("search");
 		//サーバーからキーワードに当てはまるものを探索
 		if(keyword != "") {
+		String[] key = keyword.split("\\s+", 0);
 		DetailDao dao = new DetailDao();
-		ArrayList<Restaurant> list = dao.searchDetail(keyword);
+		ArrayList<Restaurant> list = dao.searchDetail(key);
 		HttpSession session = request.getSession();
 		session.setAttribute("searchList", list);
 		session.setAttribute("key", "OK");

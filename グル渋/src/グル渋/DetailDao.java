@@ -28,6 +28,26 @@ public class DetailDao {
 		 		return list;
 	}
 	
+	int getReviewAvg(int id){
+		 //int list = new ArrayList<Rating>();
+		 //データベースに接続
+		 		try {
+		 			Class.forName("com.mysql.jdbc.Driver");
+		 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/GuruSibu", "root", "Gfreke38");
+		 			Statement stmt = con.createStatement();
+		 			ResultSet rs = stmt.executeQuery("SELECT AVG(score) AS 'avg' from review WHERE restaurantId = '" + id + "'");
+		 			while (rs.next()) {
+		 				return rs.getInt("avg");
+		 			}
+		 			rs.close();
+		 			stmt.close();
+		 			con.close();
+		 			}catch(Exception e){
+		 				System.out.println("MySQLに接続できませんでした。1");
+		 			}
+		 		return 0;
+	}
+	
 	ArrayList<Menu> getMenu(int id){
 		 ArrayList<Menu> list = new ArrayList<Menu>();
 		 //データベースに接続
@@ -37,7 +57,7 @@ public class DetailDao {
 		 			Statement stmt = con.createStatement();
 		 			ResultSet rs = stmt.executeQuery("SELECT * from menu WHERE menuId = '" + id + "'");
 		 			while (rs.next()) {
-		 				list.add(new Menu(rs.getInt("price"),rs.getString("name"),rs.getInt("isCourse"),rs.getInt("courseId")));
+		 				list.add(new Menu(rs.getInt("price"),rs.getString("name"),rs.getInt("isDish")));
 		 			}
 		 			rs.close();
 		 			stmt.close();
@@ -87,7 +107,7 @@ public class DetailDao {
 		 		return list;
 	}
 	
-	ArrayList<Restaurant> searchDetail(String keyword){
+	ArrayList<Restaurant> searchDetail(String [] keyword){
 		 //データベースに接続
 		ArrayList<Restaurant> list = new ArrayList<Restaurant>();
 		String str = "";
@@ -95,15 +115,27 @@ public class DetailDao {
 		 			Class.forName("com.mysql.jdbc.Driver");
 		 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/GuruSibu", "root", "Gfreke38");
 		 			Statement stmt = con.createStatement();
-		 			ResultSet rs = stmt.executeQuery("SELECT * from restaurant WHERE name  LIKE '%" + keyword + "%' OR address LIKE '%" + keyword + "%'");
+		 			String sql = "SELECT * from restaurant WHERE";
+		 			for (int i = 0 ; i < keyword.length ; i++){
+					      sql += " name  LIKE '%" + keyword[i] + "%' OR address LIKE '%" + keyword[i] + "%' OR";
+					    }
+		 			sql = sql.substring(0,sql.length() - 2); 
+		 			ResultSet rs = stmt.executeQuery(sql);
+		 			//ResultSet rs = stmt.executeQuery("SELECT * from restaurant WHERE name  LIKE '%" + keyword + "%' OR address LIKE '%" + keyword + "%'");
 		 			while (rs.next()) {
 		 				str += "'" + rs.getInt("id") + "',"; 
 		 			}
-		 			ResultSet rs2 = stmt.executeQuery("SELECT * from category WHERE category  LIKE '%" + keyword + "%'");
-		 			
+		 			//ResultSet rs2 = stmt.executeQuery("SELECT * from category WHERE category  LIKE '%" + keyword + "%'");
+		 			sql = "SELECT * from category WHERE";
+		 			for (int i = 0 ; i < keyword.length ; i++){
+					      sql += " category  LIKE '%" + keyword[i] + "%' OR";
+					    }
+		 			sql = sql.substring(0,sql.length() - 2);
+		 			ResultSet rs2 = stmt.executeQuery(sql);
 		 			while (rs2.next()) {
 		 				str += "'" + rs2.getInt("restaurantId") + "',"; 
 		 			}
+		 			
 		 			if(str != "") {
 		 				str = str.substring(0,str.length() - 1); 
 		 				ResultSet rs3 = stmt.executeQuery("SELECT * from restaurant WHERE id  IN (" + str + ")");
@@ -118,6 +150,26 @@ public class DetailDao {
 		 			con.close();
 		 			}catch(Exception e){
 		 				System.out.println("MySQLに接続できませんでした。");
+		 			}
+		 		return list;
+	}
+	
+	ArrayList<Course> getCourse(int id){
+		 ArrayList<Course> list = new ArrayList<Course>();
+		 //データベースに接続
+		 		try {
+		 			Class.forName("com.mysql.jdbc.Driver");
+		 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/GuruSibu", "root", "Gfreke38");
+		 			Statement stmt = con.createStatement();
+		 			ResultSet rs = stmt.executeQuery("SELECT * from course WHERE restaurantId = '" + id + "'");
+		 			while (rs.next()) {
+		 				list.add(new Course(rs.getInt("id"),rs.getString("name"),rs.getInt("price"),rs.getString("detail")));
+		 			}
+		 			rs.close();
+		 			stmt.close();
+		 			con.close();
+		 			}catch(Exception e){
+		 				System.out.println("MySQLに接続できませんでした。2");
 		 			}
 		 		return list;
 	}

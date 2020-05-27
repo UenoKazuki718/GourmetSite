@@ -38,11 +38,14 @@ public class Detail extends HttpServlet {
 		ArrayList<Rating> ratingList = dao.getReview(id);
 		Restaurant detail = dao.getDetail(id);
 		ArrayList<String> imgList = dao.getImage(id);
+		ArrayList<Course> courseList = dao.getCourse(id);
 		HttpSession session = request.getSession();
 		session.setAttribute("menu", menuList);
 		session.setAttribute("rating", ratingList);
 		session.setAttribute("detail", detail);
 		session.setAttribute("image", imgList);
+		session.setAttribute("course", courseList);
+		session.setAttribute("restaurantId", id);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/detail.jsp");
 		dispatcher.forward(request, response);
 	}
