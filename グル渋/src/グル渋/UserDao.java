@@ -22,18 +22,14 @@ public class UserDao {
             Class.forName("com.mysql.jdbc.Driver");	
         	Connection con = DriverManager.getConnection("jdbc:mysql://localhost/GuruSibu", "root", "Gfreke38");
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id, password, name, email FROM user WHERE mail = '"+email+"' AND password = '"+password+"'");
-
-            if (rs.next()) {
+			ResultSet rs = stmt.executeQuery("SELECT id, password, name, email FROM user WHERE email = '"+email+"' AND password = '"+password+"'");
+            while (rs.next()) {
                 return rs.getInt("id");
 
-            } else {
-                // アカウントがなければnullを返す
-                return 0;
-            }
+            } 
         } catch (Exception e) {
             e.printStackTrace();
-            return 0;
         }
+        return 0;
     }
 }

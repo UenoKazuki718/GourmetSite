@@ -39,20 +39,21 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータの取得
 				request.setCharacterEncoding("UTF-8");
-				String name = request.getParameter("name");
+				String email = request.getParameter("mail");
 				String password = request.getParameter("password");
 
 				// ログイン処理
 				//LoginFuncs loginFuncs = new LoginFuncs();
 				//boolean isLogin = loginFuncs.execute(name, password);
 				UserDao dao = new UserDao();
-				int id = dao.findAccount(name,password);
+				int id = dao.findAccount(email,password);
 				// ログイン成功時の処理
+				System.out.println(id);
 				if (id!=0) {
 //					User user = new User(name, password);
 					// ユーザー情報をセッションスコープに保存
 					HttpSession session = request.getSession();
-					session.setAttribute("loginUser", id);
+					session.setAttribute("loginUser", ""+id);
 				}
 
 				// ログイン結果画面にフォワード

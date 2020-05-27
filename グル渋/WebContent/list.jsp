@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List,java.sql.Connection,java.sql.DriverManager,java.sql.ResultSet,java.sql.Statement,java.util.ArrayList,グル渋.Restaurant"
 %>
-<% String check = (String) session.getAttribute("session"); 
+<% String check = (String) session.getAttribute("loginUser"); 
 request.setCharacterEncoding("UTF-8");
 //データベースに接続
 	ArrayList<Restaurant> list = new ArrayList<Restaurant>();

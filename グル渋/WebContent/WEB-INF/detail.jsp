@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List,java.util.ArrayList,グル渋.Rating,グル渋.Menu,グル渋.Restaurant,グル渋.Course"
 %>
-<% String check = (String) session.getAttribute("session"); 
+<% String check = (String) session.getAttribute("loginUser"); 
 request.setCharacterEncoding("UTF-8");
 ArrayList<Rating> ratingList = (ArrayList<Rating>) session.getAttribute("rating");
 ArrayList<Menu> menuList = (ArrayList<Menu>) session.getAttribute("menu");
@@ -94,7 +94,7 @@ ArrayList<Course> courseList = (ArrayList<Course>) session.getAttribute("course"
 
 <div id="book" class="tabcontent">
  <form name = "form" action="/グル渋/Book" method="post">
- <% if(check != null) { %>
+ <% if(check == null) { %>
     予約するにはログインしてください<br>
     <li><a href="/グル渋/login.html">ログイン</a></li>
 <% }else {  %>
@@ -115,7 +115,7 @@ ArrayList<Course> courseList = (ArrayList<Course>) session.getAttribute("course"
 </div>
 
 <div id="review" class="tabcontent">
-<% if(check != null) { %>
+<% if(check == null) { %>
     レビューするにはログインしてください<br>
     <li><a href="/グル渋/login.html">ログイン</a></li>
 <% }else {  %>
