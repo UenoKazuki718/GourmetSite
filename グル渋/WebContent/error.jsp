@@ -8,6 +8,6 @@
 </head>
 <body>
 ログインに失敗しました。<br>
-<a href="login.jsp"><button>ログインページへ</button></a>
+<a href="login.jsp"><button>ログイン画面へ</button></a>
 </body>
 </html>
