@@ -15,7 +15,7 @@
 </form>
 <p>
 アカウント登録がお済みでない方はこちらへ↓<br>
-<a href="/WEB-INF/makeAccount.jsp"><button>新規登録</button></a>
+<a href="makeAccount.jsp"><button>新規登録</button></a>
 </p>
 <a href=<%= url%>>戻る</a>
 </body>

@@ -53,7 +53,7 @@ public class MakeUser extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("user", mud);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/makeUserSuccess.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("makeUserSuccess.jsp");
         rd.forward(request, response);
 
     }
