@@ -53,13 +53,19 @@ public class Login extends HttpServlet {
 					// ユーザー情報をセッションスコープに保存
 					HttpSession session = request.getSession();
 					session.setAttribute("loginUser", ""+id);
+					RequestDispatcher dispatcher = request.getRequestDispatcher(
+							"/loginSuccess.jsp"
+							);
+					dispatcher.forward(request, response);
+				}else {
+					RequestDispatcher dispatcher = request.getRequestDispatcher(
+							"/error.jsp"
+							);
+					dispatcher.forward(request, response);
 				}
 
 				// ログイン結果画面にフォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher(
-						"/loginSuccess.jsp"
-						);
-				dispatcher.forward(request, response);
+
 	}
 
 }
