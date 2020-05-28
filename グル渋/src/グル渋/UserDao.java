@@ -19,14 +19,14 @@ public class UserDao {
 
         // データベースへ接続
         try  {
-            Class.forName("com.mysql.jdbc.Driver");	
+            Class.forName("com.mysql.jdbc.Driver");
         	Connection con = DriverManager.getConnection("jdbc:mysql://localhost/GuruSibu", "root", "Gfreke38");
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT id, password, name, email FROM user WHERE email = '"+email+"' AND password = '"+password+"'");
             while (rs.next()) {
                 return rs.getInt("id");
 
-            } 
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

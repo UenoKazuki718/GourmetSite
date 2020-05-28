@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>登録完了</title>
 </head>
 <body>
-ログインに失敗しました。<br>
-<a href="login.jsp"><button>ログインページへ</button></a>
+新規登録が完了しました!<br>
+<a href="/WEB-INF/login.jsp">ログイン画面へ</a>
 </body>
 </html>

@@ -54,7 +54,7 @@ public class Login extends HttpServlet {
 					dispatcher.forward(request, response);
 				}else {
 					RequestDispatcher dispatcher = request.getRequestDispatcher(
-							"/error.jsp"
+							"/WEB-INF/error.jsp"
 							);
 					dispatcher.forward(request, response);
 				}
