@@ -48,13 +48,20 @@ public class MakeUser extends HttpServlet {
 
         // アカウントをDBに登録
         MakeUserDAO mud = new MakeUserDAO();
-        mud.MakeUserDAO(name,email,password);
-        // セッションにアカウント情報を保存
+        int ret = mud.MakeUserDAO(name,email,password);
+     // セッションにアカウント情報を保存
         HttpSession session = request.getSession();
-        session.setAttribute("user", mud);
-
-        RequestDispatcher rd = request.getRequestDispatcher("makeUserSuccess.jsp");
+        String url;
+        if(ret == 0) {
+        session.setAttribute("user", mud);   
+        url = "makeUserSuccess.jsp";
+        }else {
+        session.setAttribute("error", "error"); 
+        url = "makeAccount.jsp";
+        }
+        RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
+
 
     }
 

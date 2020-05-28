@@ -11,15 +11,16 @@ public class MakeUserDAO {
         //final String jdbcUrl = "jdbc:mysql://localhost:8080/GuruSibu";//?serverTimezone=UTC";
 
 
-    public void MakeUserDAO(String name,String email,String password) {
+    public int MakeUserDAO(String name,String email,String password) {
         try {
         	Class.forName("com.mysql.jdbc.Driver");	
         	Connection con = DriverManager.getConnection("jdbc:mysql://localhost/GuruSibu", "root", "Gfreke38");
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate("INSERT INTO user (name,email,password) VALUES ('"+name+"','"+email+"','"+password+"')");
+			return 0;
         } catch (Exception e) {
 
-            e.printStackTrace();
+            return -1;
         }
     }
 }

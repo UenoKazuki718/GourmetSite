@@ -98,7 +98,7 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
  <form name = "form" action="/グル渋/Book" method="post">
  <% if(check == null) { %>
     予約するにはログインしてください<br>
-    <li><a href="/WEB-INF/login.jsp">ログイン</a></li>
+    <li><a href="/グル渋/login.jsp">ログイン</a></li>
 <% }else {  %>
   名前  : <input type="text" id="name" name="name" required><br>
   予約日 : <input type="text"  id="date" name="date" class="datetimepicker" required><br>
@@ -119,7 +119,7 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
 <div id="review" class="tabcontent">
 <% if(check == null) { %>
     レビューするにはログインしてください<br>
-    <li><a href="/グル渋/WEB-INF/login.jsp">ログイン</a></li>
+    <li><a href="/グル渋/login.jsp">ログイン</a></li>
 <% }else {  %>
     <form action="/グル渋/Review" method="post">
     <fieldset class="starability-basic">

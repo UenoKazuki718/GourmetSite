@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <% String error = (String) session.getAttribute("error"); %>    
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,5 +17,13 @@
     <a href="/グル渋/list.jsp">戻る</a>
     <input type="submit" value="作成">
     </form>
+       <% if(error != null){%>
+    <% if(error.equals("error")){%>
+    <script>
+      alert('このメールアドレスはすでに登録されています');
+    </script>
+    <% session.setAttribute("error",""); 
+    }
+    }%>
 </body>
 </html>
