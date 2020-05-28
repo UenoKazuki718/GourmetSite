@@ -43,7 +43,6 @@ public class Review extends HttpServlet {
 		String user = (String) session.getAttribute("loginUser");
 		int userId = Integer.parseInt(user);
 		HTMLescape xss = new HTMLescape();
-		System.out.print(xss.escapeHTML(request.getParameter("text")));
 		String text = xss.escapeHTML(request.getParameter("text"));
 		ReviewDao dao = new ReviewDao();
 		dao.setReview(rating,text,restaurantId,userId);

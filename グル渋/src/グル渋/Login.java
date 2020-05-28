@@ -41,20 +41,15 @@ public class Login extends HttpServlet {
 				request.setCharacterEncoding("UTF-8");
 				String email = request.getParameter("mail");
 				String password = request.getParameter("password");
-
-				// ログイン処理
-				//LoginFuncs loginFuncs = new LoginFuncs();
-				//boolean isLogin = loginFuncs.execute(name, password);
 				UserDao dao = new UserDao();
 				int id = dao.findAccount(email,password);
-				// ログイン成功時の処理
+				HttpSession session = request.getSession();
+				String url = (String) session.getAttribute("url");
 				if (id!=0) {
-//					User user = new User(name, password);
 					// ユーザー情報をセッションスコープに保存
-					HttpSession session = request.getSession();
 					session.setAttribute("loginUser", ""+id);
 					RequestDispatcher dispatcher = request.getRequestDispatcher(
-							"/loginSuccess.jsp"
+							url
 							);
 					dispatcher.forward(request, response);
 				}else {

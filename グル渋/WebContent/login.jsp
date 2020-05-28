@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String url = (String) session.getAttribute("back");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,5 +17,6 @@
 アカウント登録がお済みでない方はこちらへ↓<br>
 <a href="makeAccount.jsp"><button>新規登録</button></a>
 </p>
+<a href=<%= url%>>戻る</a>
 </body>
 </html>

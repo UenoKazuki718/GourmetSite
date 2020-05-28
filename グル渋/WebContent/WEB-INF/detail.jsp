@@ -10,6 +10,8 @@ Restaurant detail = (Restaurant) session.getAttribute("detail");
 String img = "http://localhost:8080/グル渋/image/" + detail.getImage();
 ArrayList<String> imgList = (ArrayList<String>) session.getAttribute("image");
 ArrayList<Course> courseList = (ArrayList<Course>) session.getAttribute("course");
+session.setAttribute("url","/Detail?id="+detail.getId());
+session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
 %>
 <!DOCTYPE html>
 <html>
@@ -96,7 +98,7 @@ ArrayList<Course> courseList = (ArrayList<Course>) session.getAttribute("course"
  <form name = "form" action="/グル渋/Book" method="post">
  <% if(check == null) { %>
     予約するにはログインしてください<br>
-    <li><a href="/グル渋/login.jsp?=<%= detail.getId()%>">ログイン</a></li>
+    <li><a href="/グル渋/login.jsp">ログイン</a></li>
 <% }else {  %>
   名前  : <input type="text" id="name" name="name" required><br>
   予約日 : <input type="text"  id="date" name="date" class="datetimepicker" required><br>
@@ -117,7 +119,7 @@ ArrayList<Course> courseList = (ArrayList<Course>) session.getAttribute("course"
 <div id="review" class="tabcontent">
 <% if(check == null) { %>
     レビューするにはログインしてください<br>
-    <li><a href="/グル渋/login.jsp?=<%= detail.getId()%>">ログイン</a></li>
+    <li><a href="/グル渋/login.jsp">ログイン</a></li>
 <% }else {  %>
     <form action="/グル渋/Review" method="post">
     <fieldset class="starability-basic">
