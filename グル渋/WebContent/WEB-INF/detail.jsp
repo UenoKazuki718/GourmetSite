@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List,java.util.ArrayList,グル渋.Rating,グル渋.Menu,グル渋.Restaurant,グル渋.Course"
 %>
-<% String check = (String) session.getAttribute("loginUser"); 
+<% String check = (String) session.getAttribute("loginUser");
 request.setCharacterEncoding("UTF-8");
 ArrayList<Rating> ratingList = (ArrayList<Rating>) session.getAttribute("rating");
 ArrayList<Menu> menuList = (ArrayList<Menu>) session.getAttribute("menu");
@@ -37,7 +37,7 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
 
 <div id="introduction" class="tabcontent">
         お店の紹介内容  <br>
-        <%= detail.getInf()%>  
+        <%= detail.getInf()%>
 </div>
 
 <div id="menu" class="tabcontent">
@@ -45,9 +45,9 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
   <button class="tablinks" onclick="detail(event, 'dishlist')" id="defaultOpen">料理</button>
   <button class="tablinks" onclick="detail(event, 'drinklist')">飲み物</button>
   <button class="tablinks" onclick="detail(event, 'courselist')">コース</button>
-</div>  
+</div>
  </div>
- 
+
   <div id="dishlist" class="tabcontent">
      <ul>
         <% if (menuList != null) { %>
@@ -57,9 +57,9 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
 		<% } %>
 		<% } %>
 		<% } %>
-    </ul>  
+    </ul>
   </div>
-  
+
     <div id="drinklist" class="tabcontent">
      <ul>
         <% if (menuList != null) { %>
@@ -69,9 +69,9 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
 		<% } %>
 		<% } %>
 		<% } %>
-    </ul>  
+    </ul>
   </div>
-  
+
    <div id="courselist" class="tabcontent">
      <ul>
         <% if (courseList != null) { %>
@@ -82,9 +82,9 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
 		 	<% } %>
 		<% } %>
 		<% } %>
-    </ul>  
+    </ul>
   </div>
-  
+
  <div id="image" class="tabcontent">
 	<% if (imgList != null) { %>
 		<% for(String post : imgList) {%>
@@ -98,7 +98,7 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
  <form name = "form" action="/グル渋/Book" method="post">
  <% if(check == null) { %>
     予約するにはログインしてください<br>
-    <li><a href="/グル渋/login.jsp">ログイン</a></li>
+    <li><a href="/WEB-INF/login.jsp">ログイン</a></li>
 <% }else {  %>
   名前  : <input type="text" id="name" name="name" required><br>
   予約日 : <input type="text"  id="date" name="date" class="datetimepicker" required><br>
@@ -119,7 +119,7 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
 <div id="review" class="tabcontent">
 <% if(check == null) { %>
     レビューするにはログインしてください<br>
-    <li><a href="/グル渋/login.jsp">ログイン</a></li>
+    <li><a href="/グル渋/WEB-INF/login.jsp">ログイン</a></li>
 <% }else {  %>
     <form action="/グル渋/Review" method="post">
     <fieldset class="starability-basic">
@@ -127,7 +127,7 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
     <input type="radio" id="rate5" name="rating" value="1" required>
     <label for="rate5" title="Amazing" aria-label="Amazing, 5 stars">5 stars</label>
     <input type="radio" id="rate4" name="rating" value="2">
-    <label for="rate4" title="Very good" aria-label="Very good, 4 stars">4 stars</label> 
+    <label for="rate4" title="Very good" aria-label="Very good, 4 stars">4 stars</label>
     <input type="radio" id="rate3" name="rating" value="3">
     <label for="rate3" title="Average" aria-label="Average, 3 stars">3 stars</label>
     <input type="radio" id="rate2" name="rating" value="4">
