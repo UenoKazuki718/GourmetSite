@@ -96,7 +96,7 @@ ArrayList<Course> courseList = (ArrayList<Course>) session.getAttribute("course"
  <form name = "form" action="/グル渋/Book" method="post">
  <% if(check == null) { %>
     予約するにはログインしてください<br>
-    <li><a href="/グル渋/login.html">ログイン</a></li>
+    <li><a href="/グル渋/login.jsp?=<%= detail.getId()%>">ログイン</a></li>
 <% }else {  %>
   名前  : <input type="text" id="name" name="name" required><br>
   予約日 : <input type="text"  id="date" name="date" class="datetimepicker" required><br>
@@ -108,7 +108,7 @@ ArrayList<Course> courseList = (ArrayList<Course>) session.getAttribute("course"
 		<% } %>
 	<% } %>
 	</select><br>
-  電話番号 : <input type="tel" name="tel" id="tel" pattern="\d{1,5}-\d{1,4}-\d{4,5}"  placeholder="080-1234-5678" required><br>
+  電話番号 : <input type="tel" name="tel" id="tel" pattern="\d{1,5}-\d{1,4}-\d{3,5}"  placeholder="080-1234-5678" required><br>
   <input type ="submit" value="予約する">
      <% } %>
 </form>
@@ -117,7 +117,7 @@ ArrayList<Course> courseList = (ArrayList<Course>) session.getAttribute("course"
 <div id="review" class="tabcontent">
 <% if(check == null) { %>
     レビューするにはログインしてください<br>
-    <li><a href="/グル渋/login.html">ログイン</a></li>
+    <li><a href="/グル渋/login.jsp?=<%= detail.getId()%>">ログイン</a></li>
 <% }else {  %>
     <form action="/グル渋/Review" method="post">
     <fieldset class="starability-basic">

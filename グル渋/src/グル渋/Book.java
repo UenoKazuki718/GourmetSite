@@ -39,7 +39,8 @@ public class Book extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		int userId = 1;////////
+		String user = (String) session.getAttribute("loginUser");
+		int userId = Integer.parseInt(user);
 		int restaurantId = (int) session.getAttribute("restaurantId");///////あとで書く
 		String name = request.getParameter("name");
 		String date = request.getParameter("date");

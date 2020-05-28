@@ -48,8 +48,7 @@ public class MakeUser extends HttpServlet {
 
         // アカウントをDBに登録
         MakeUserDAO mud = new MakeUserDAO();
-        System.out.println("test1");
-        mud.MakeUserDAO(name,password,email);
+        mud.MakeUserDAO(name,email,password);
         // セッションにアカウント情報を保存
         HttpSession session = request.getSession();
         session.setAttribute("user", mud);

@@ -48,7 +48,6 @@ public class Login extends HttpServlet {
 				UserDao dao = new UserDao();
 				int id = dao.findAccount(email,password);
 				// ログイン成功時の処理
-				System.out.println(id);
 				if (id!=0) {
 //					User user = new User(name, password);
 					// ユーザー情報をセッションスコープに保存

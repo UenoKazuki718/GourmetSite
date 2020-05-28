@@ -40,8 +40,11 @@ public class Review extends HttpServlet {
 		int rating = Integer.parseInt(request.getParameter("rating"));
 		HttpSession session = request.getSession();
 		int restaurantId = (int) session.getAttribute("restaurantId");///////あとで書く
-		int userId = 1;////////あとで書く
-		String text = request.getParameter("text");
+		String user = (String) session.getAttribute("loginUser");
+		int userId = Integer.parseInt(user);
+		HTMLescape xss = new HTMLescape();
+		System.out.print(xss.escapeHTML(request.getParameter("text")));
+		String text = xss.escapeHTML(request.getParameter("text"));
 		ReviewDao dao = new ReviewDao();
 		dao.setReview(rating,text,restaurantId,userId);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/detail.jsp");

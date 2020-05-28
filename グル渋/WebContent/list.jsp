@@ -42,7 +42,7 @@ request.setCharacterEncoding("UTF-8");
     <nav class="pc-nav">
         <ul>
         <% if(check == null) { %>
-            <li><a href="/グル渋/login.jsp">ログイン</a></li>
+            <li><a href="/グル渋/login.jsp?url=/list.jsp">ログイン</a></li>
         <% }else {  %>
         	<li><a href="/グル渋/MyPage">マイページ</a></li>
             <li><a href="/グル渋/Logout">ログアウト</a></li>

@@ -12,7 +12,7 @@ public class BookDao {
 			Class.forName("com.mysql.jdbc.Driver");			 
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/GuruSibu", "root", "Gfreke38");
 			Statement stmt = con.createStatement();
-			stmt.executeUpdate("INSERT INTO book (userId,restaurantId,date,people,courseId,tel,name) VALUES ('"+userId+"','"+restaurantId+"','"+date+"','"+people+"','"+courseId+"','"+tel+"','"+name+"')");
+			stmt.executeUpdate("INSERT INTO book (userId,restaurantId,date,people,courseId,tel,userName) VALUES ('"+userId+"','"+restaurantId+"','"+date+"','"+people+"','"+courseId+"','"+tel+"','"+name+"')");
 			stmt.close();
 			con.close();
 			}catch(Exception e){
