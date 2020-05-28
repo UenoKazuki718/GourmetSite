@@ -7,6 +7,7 @@
 <title>登録完了</title>
 </head>
 <body>
-新規登録が完了しました!
+新規登録が完了しました!<br>
+<a href="/グル渋/login.jsp">ログイン画面へ</a>
 </body>
 </html>

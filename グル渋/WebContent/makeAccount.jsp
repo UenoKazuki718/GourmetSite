@@ -9,7 +9,7 @@
 <body>
 <h1>アカウント作成</h1>
  <form action="/グル渋/MakeUser" method="post" id="form">
-    ユーザー名 : <input type="text" id="username" name="username" ><br>
+    ユーザー名 : <input type="text" id="name" name="name" ><br>
     メールアドレス : <input type="email" id="email" name="email" minlength='8' maxlength='100' ><br>
     パスワード : <input type="password" id="password" name="password" minlength='8' maxlength='32'><br>
     <a href="/グル渋/list.jsp">戻る</a>
