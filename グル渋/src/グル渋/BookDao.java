@@ -7,13 +7,21 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class BookDao {
-	void setBook(int userId,int restaurantId,String date,int people,int courseId,String tel,String name){
+	void setBook(int userId,int restaurantId,String date,int people,int courseId,String tel){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");			 
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/GuruSibu", "root", "Gfreke38");
 			Statement stmt = con.createStatement();
-			stmt.executeUpdate("INSERT INTO book (userId,restaurantId,date,people,courseId,tel,userName) VALUES ('"+userId+"','"+restaurantId+"','"+date+"','"+people+"','"+courseId+"','"+tel+"','"+name+"')");
-			stmt.close();
+ 			ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE id = '" + userId + "'");
+ 			String name = null;
+ 			while (rs.next()) {
+ 				name = rs.getString("name");
+ 			}
+ 			rs.close();
+ 			stmt.close();
+			Statement stmt2 = con.createStatement();
+			stmt2.executeUpdate("INSERT INTO book (userId,restaurantId,date,people,courseId,tel,userName) VALUES ('"+userId+"','"+restaurantId+"','"+date+"','"+people+"','"+courseId+"','"+tel+"','"+name+"')");
+			stmt2.close();
 			con.close();
 			}catch(Exception e){
 				System.out.println("MySQLに接続できませんでした。");

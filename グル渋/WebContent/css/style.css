@@ -71,3 +71,13 @@ li {
   height: 21px;
   display: block;
 }
+
+div.radius {
+ border: 1px solid gray;
+ border-radius: 10px;
+ margin-right: 10px;
+ width: auto;
+ height: auto;
+ padding: 5px;
+ display: inline-block;
+}

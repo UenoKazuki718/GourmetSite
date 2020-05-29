@@ -105,7 +105,6 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
     予約するにはログインしてください<br>
     <li><a href="/グル渋/login.jsp">ログイン</a></li>
 <% }else {  %>
-  名前  : <input type="text" id="name" name="name" required><br>
   予約日 : <input type="text"  id="date" name="date" class="datetimepicker" required><br>
   人数  : <input type="text" id="num" name="num" maxlength='2' pattern="[1-9]|[1-9][0-9]" required>人<br>
   コース : <select class="course" name="course" id="course" required onChange="selectboxChange()">

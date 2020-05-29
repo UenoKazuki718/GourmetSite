@@ -42,13 +42,12 @@ public class Book extends HttpServlet {
 		String user = (String) session.getAttribute("loginUser");
 		int userId = Integer.parseInt(user);
 		int restaurantId = (int) session.getAttribute("restaurantId");
-		String name = request.getParameter("name");
 		String date = request.getParameter("date");
 		int num = Integer.parseInt(request.getParameter("num"));
 		int course = Integer.parseInt(request.getParameter("course"));
 		String tel = request.getParameter("tel");
 		BookDao dao = new BookDao();
-		dao.setBook(userId,restaurantId,date,num,course,tel,name);
+		dao.setBook(userId,restaurantId,date,num,course,tel);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/detail.jsp");
 		dispatcher.forward(request, response);
 	}

@@ -80,7 +80,9 @@ request.setCharacterEncoding("UTF-8");
 カテゴリ:
 		<% ResultSet rs = stmt.executeQuery("SELECT * from category WHERE restaurantId = '"+post.getId()+"'");
 		while (rs.next()) {%>
+		<div class="radius">
 			<%= rs.getString("category")%>
+			</div>
 		<%}
 		rs.close();%>
 <% ResultSet rs2 = stmt.executeQuery("SELECT AVG(score) AS 'avg' from review WHERE restaurantId = '"+post.getId()+"'");
