@@ -19,7 +19,7 @@
     <nav class="pc-nav">
         <ul>
             <li><a href="/グル渋/list.jsp">一覧に戻る</a></li>
-            <li><a href="/グル渋/editAccount.jsp">アカウント編集</a></li>
+            <li><a href="/グル渋/Path">アカウント編集</a></li>
         </ul>
     </nav>
 </header>
