@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% String url = (String) session.getAttribute("back");%>
+<% String url = (String) session.getAttribute("back");
+   if(url==null){
+	   url = "/グル渋/makeAccount.jsp";
+   }
+%>
 <!DOCTYPE html>
 <html>
 <head>

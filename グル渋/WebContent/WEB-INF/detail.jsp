@@ -20,6 +20,9 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
 <link rel="stylesheet" type="text/css" href="http://localhost:8080/グル渋/css/starability-all.min.css">
 <link rel="stylesheet" type="text/css" href="http://localhost:8080/グル渋/css/detail.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-datetimepicker@2.5.20/jquery.datetimepicker.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -89,7 +92,9 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
 	<% if (imgList != null) { %>
 		<% for(String post : imgList) {%>
 		 	<% String image = "http://localhost:8080/グル渋/image/" + post;%>
-		 	<img style="width: 100px; height: 100px" src=<%= image%>>
+		 	<a href=<%= image%> data-lightbox="abc" >
+   <img src=<%= image%> style="width: 100px; height: 100px">
+</a>
 		<% } %>
 	<% } %>
  </div>
