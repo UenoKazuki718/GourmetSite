@@ -3,6 +3,7 @@
 <%@ page import="java.util.List,java.util.ArrayList,グル渋.BookDetails"
 %>
 <% ArrayList<BookDetails> list = (ArrayList<BookDetails>) session.getAttribute("bookList"); %>
+<% String success = (String) session.getAttribute("success"); %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,7 @@
     <nav class="pc-nav">
         <ul>
             <li><a href="/グル渋/list.jsp">一覧に戻る</a></li>
+            <li><a href="/グル渋/editAccount.jsp">アカウント編集</a></li>
         </ul>
     </nav>
 </header>
@@ -38,6 +40,13 @@
 </div>
 		<% } %>
 <% } %>
-
+       <% if(success != null){%>
+    <% if(success.equals("success")){%>
+    <script>
+      alert('アカウントが編集されました');
+    </script>
+    <% session.setAttribute("success",""); 
+    }
+    }%>
 </body>
 </html>

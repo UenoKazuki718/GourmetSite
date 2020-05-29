@@ -142,8 +142,9 @@ session.setAttribute("back","/グル渋/Detail?id="+detail.getId());
     <div style="width:100%;height:150px;overflow:auto;">
 <% if (ratingList != null) { %>
 <% for(Rating post : ratingList) {%>
- 	<p>評価 : <%= post.getScore()%> </p>
- 	<li> <%= post.getText()%> </li>
+<% int rate = post.getScore()*20;%>
+<div class="star-ratings-sprite"><span style="width:<%= rate%>%" class="star-ratings-sprite-rating"></span></div>
+ 	 <p><%= post.getText()%> </p>
 <% } %>
 <% } %>
 </div>

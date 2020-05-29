@@ -31,7 +31,9 @@ public class MyPage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		int id = 1;//(int) session.getAttribute("userId");;
+		request.setCharacterEncoding("UTF-8");
+		String user = (String) session.getAttribute("loginUser");
+		int id = Integer.parseInt(user);
 		BookDao dao = new BookDao();
 		ArrayList<BookDetails> bookList = dao.getBook(id);
 		session.setAttribute("bookList", bookList);

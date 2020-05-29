@@ -18,6 +18,7 @@ public class MakeUserDAO {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate("INSERT INTO user (name,email,password) VALUES ('"+name+"','"+email+"','"+password+"')");
 			return 0;
+			
         } catch (Exception e) {
 
             return -1;

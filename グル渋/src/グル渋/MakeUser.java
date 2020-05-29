@@ -41,11 +41,6 @@ public class MakeUser extends HttpServlet {
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-
-
-        // makeAccout.jspから受け取った値をビーンズにセット
-
-
         // アカウントをDBに登録
         MakeUserDAO mud = new MakeUserDAO();
         int ret = mud.MakeUserDAO(name,email,password);

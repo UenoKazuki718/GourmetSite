@@ -1,6 +1,7 @@
 package グル渋;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Book
+ * Servlet implementation class EditUser
  */
-@WebServlet("/Book")
-public class Book extends HttpServlet {
+@WebServlet("/EditUser")
+public class EditUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Book() {
+    public EditUser() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,17 +41,27 @@ public class Book extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("loginUser");
-		int userId = Integer.parseInt(user);
-		int restaurantId = (int) session.getAttribute("restaurantId");
-		String name = request.getParameter("name");
-		String date = request.getParameter("date");
-		int num = Integer.parseInt(request.getParameter("num"));
-		int course = Integer.parseInt(request.getParameter("course"));
-		String tel = request.getParameter("tel");
-		BookDao dao = new BookDao();
-		dao.setBook(userId,restaurantId,date,num,course,tel,name);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/detail.jsp");
-		dispatcher.forward(request, response);
+		int id = Integer.parseInt(user);
+        String name = request.getParameter("name");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        // アカウントをDBに登録
+        EditUserDao eud = new EditUserDao();
+        int ret = eud.EditUser(id,name,email,password);
+     // セッションにアカウント情報を保存
+        String url;
+        if(ret==0) {
+	        BookDao bd = new BookDao();
+			ArrayList<BookDetails> bookList = bd.getBook(id);
+			session.setAttribute("bookList", bookList);
+			session.setAttribute("success", "success"); 
+			url = "/WEB-INF/myPage.jsp";
+        }else {
+            session.setAttribute("error", "error"); 
+            url = "editAccount.jsp";
+            }
+         RequestDispatcher rd = request.getRequestDispatcher(url);
+         rd.forward(request, response);
 	}
 
 }
