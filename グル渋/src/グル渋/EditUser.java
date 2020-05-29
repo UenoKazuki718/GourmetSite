@@ -58,7 +58,7 @@ public class EditUser extends HttpServlet {
 			url = "/WEB-INF/myPage.jsp";
         }else {
             session.setAttribute("error", "error"); 
-            url = "editAccount.jsp";
+            url = "/WEB-INF/editAccount.jsp";
             }
          RequestDispatcher rd = request.getRequestDispatcher(url);
          rd.forward(request, response);

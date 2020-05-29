@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% String error = (String) session.getAttribute("error"); %>    
-    
+<% String error = (String) session.getAttribute("error"); %>        
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +16,7 @@
     <a href="/グル渋/MyPage">戻る</a> 
     <input type="submit" value="編集">
     </form>
-       <% if(error != null){%>
+       <%if(error != null){%>
     <% if(error.equals("error")){%>
     <script>
       alert('このメールアドレスはすでに登録されています');
